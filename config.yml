@@ -1,0 +1,6 @@
+python_version: "3.11"
+packages:
+  - requests==2.31.0
+  - fastapi
+  - uvicorn==0.30.0
+output_archive: "packages.tar.gz"
