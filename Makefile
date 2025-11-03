@@ -1,4 +1,4 @@
-IMAGE_NAME = package-fetcher
+IMAGE_NAME = pip-offline-downloader
 OUTPUT_DIR = $(PWD)/out
 
 all: build run
