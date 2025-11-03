@@ -1,4 +1,4 @@
-# Python Package Fetcher
+# PIP Offline Package Downloader
 
 Outil simple pour télécharger des paquets Python et leurs dépendances pour un usage offline.
 Génère une archive `.tar.gz` prête à être importée dans un environnement offline (ex : Nexus).
@@ -10,7 +10,7 @@ Génère une archive `.tar.gz` prête à être importée dans un environnement o
 * Génération d’une archive unique pour un transfert facile.
 * Configuration simple via `config.yml`.
 
-## ⚙️ Utilisation
+## Utilisation
 
 ### 1. Modifier `config.yml`
 
