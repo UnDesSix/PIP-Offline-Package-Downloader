@@ -22,7 +22,7 @@ packages:
   - requests==2.31.0
   - fastapi
   - uvicorn==0.30.0
-output_archive: "packages.tar.gz"
+output_archive: "packages_py.tar.gz"
 ```
 
 ### 2. Construire l’image Docker
