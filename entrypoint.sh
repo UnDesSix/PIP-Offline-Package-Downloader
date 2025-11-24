@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# 1. Define the key directly in the script
+SIGNATURE_KEY="8VFGpiIQ95JnFwofNU2O73vSviUGgvRT"
+
 CONFIG_FILE="/app/config.yml"
 
 PYTHON_VERSION=$(yq '.python_version' "$CONFIG_FILE" | tr -d '"')
@@ -12,6 +15,7 @@ echo "Python version : $PYTHON_VERSION"
 echo "Output archive  : $OUTPUT_ARCHIVE"
 echo "Packages        :"
 echo "$PACKAGES"
+echo "Signature Key   : $SIGNATURE_KEY"
 echo "==============================="
 
 echo "[1/4] Installation de Python $PYTHON_VERSION..."
@@ -32,6 +36,9 @@ for pkg in $PACKAGES; do
     echo "---- Téléchargement de $pkg ----"
     python${PYTHON_VERSION} -m pip download "$pkg" -d /tmp/wheels
 done
+
+echo "Génération du fichier signature.key..."
+echo "$SIGNATURE_KEY" > /tmp/wheels/signature.key
 
 echo "[4/4] Création de l’archive..."
 tar -czf /output/${OUTPUT_ARCHIVE} -C /tmp/wheels .
