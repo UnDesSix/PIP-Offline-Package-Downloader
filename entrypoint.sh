@@ -38,9 +38,21 @@ for pkg in $PACKAGES; do
 done
 
 echo "Génération du fichier signature.key..."
-echo "$SIGNATURE_KEY" > /tmp/wheels/signature.key
+echo -n "$SIGNATURE_KEY" > /tmp/wheels/signature.key
 
 echo "[4/4] Création de l’archive..."
-tar -czf /output/${OUTPUT_ARCHIVE} -C /tmp/wheels .
+
+# Préparer structure out/
+rm -rf /tmp/archive
+mkdir -p /tmp/archive/out
+cp -r /tmp/wheels/* /tmp/archive/out/
+
+# Créer packages.tar (non compressé)
+tar -cf /tmp/archive/packages.tar -C /tmp/archive out
+
+# Compresser en .tar.gz
+gzip -c /tmp/archive/packages.tar > /output/${OUTPUT_ARCHIVE}
+
+chmod -R a+rw /output
 
 echo "Terminé : archive disponible dans /output/${OUTPUT_ARCHIVE}"
