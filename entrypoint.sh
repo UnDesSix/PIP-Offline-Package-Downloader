@@ -55,4 +55,4 @@ gzip -c /tmp/archive/packages.tar > /output/${OUTPUT_ARCHIVE}
 
 chmod -R a+rw /output
 
-echo "Terminé : archive disponible dans /output/${OUTPUT_ARCHIVE}"
+echo "Terminé : archive disponible dans /out/${OUTPUT_ARCHIVE}"
